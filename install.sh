@@ -110,7 +110,7 @@ get_virtualization(){
 }
 
 server_options() {
-    output "Please select what you would like to install:\n[1] Install panel (v0.7.15).\n[2] Install daemon (v0.6.12).\n[3] Install the panel and daemon.\n[4] Upgrade 0.7.x panel to 0.7.15.\n[5] Upgrade 0.6.x daemon to 0.6.12.\n[6] Install the standalone SFTP server (Only use this after you have installed and configured the daemon. Ubuntu 14.04 is NOT supported.)\n[7] Emergency MariaDB root password reset."
+    output "Please select what you would like to install:\n[1] Install panel (v0.7.15).\n[2] Install daemon (v0.6.13).\n[3] Install the panel and daemon.\n[4] Upgrade 0.7.x panel to 0.7.15.\n[5] Upgrade 0.6.x daemon to 0.6.12.\n[6] Install the standalone SFTP server (Only use this after you have installed and configured the daemon. Ubuntu 14.04 is NOT supported.)\n[7] Emergency MariaDB root password reset."
     read choice
     case $choice in
         1 ) installoption=1
@@ -802,7 +802,7 @@ install_daemon() {
     output "Installing the Pterodactyl Daemon."
     mkdir -p /srv/daemon /srv/daemon-data
     cd /srv/daemon
-    curl -L https://github.com/pterodactyl/daemon/releases/download/v0.6.12/daemon.tar.gz | tar --strip-components=1 -xzv
+    curl -L https://github.com/pterodactyl/daemon/releases/download/v0.6.13/daemon.tar.gz | tar --strip-components=1 -xzv
     npm install --only=production
     if [ "$lsb_dist" =  "ubuntu" ] && [ "$dist_version" = "14.04" ]; then
         npm install -g forever
@@ -841,7 +841,7 @@ upgrade_daemon(){
     else
     service wings stop
     fi
-    curl -L https://github.com/pterodactyl/daemon/releases/download/v0.6.12/daemon.tar.gz | tar --strip-components=1 -xzv
+    curl -L https://github.com/pterodactyl/daemon/releases/download/v0.6.13/daemon.tar.gz | tar --strip-components=1 -xzv
     npm update --only=production
     if [ "$lsb_dist" =  "ubuntu" ] && [ "$dist_version" = "14.04" ]; then
         forever start src/index.js
