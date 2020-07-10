@@ -24,7 +24,7 @@ get_distribution(){
     output ""
 
     if [ "$lsb_dist" =  "ubuntu" ]; then
-        if [ "$dist_version" != "18.10" ] && [ "$dist_version" != "18.04" ] && [ "$dist_version" != "16.04" ] && [ "$dist_version" != "14.04" ]; then
+        if [ "$dist_version" != "20.04" ] && [ "$dist_version" != "18.10" ] && [ "$dist_version" != "18.04" ] && [ "$dist_version" != "16.04" ] && [ "$dist_version" != "14.04" ]; then
             output "Unsupported Ubuntu version. Only Ubuntu 18.04, 16.04, and 14.04 are supported."
             exit 0
         fi
